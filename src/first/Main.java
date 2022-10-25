@@ -17,7 +17,7 @@ public class Main {
 	public ArrayList<School> getSchoolName() {
 		return schoolName;
 	}
-	
+	//factorial
 	public static int factorialReoursionMethod(int n) {
 		
 		int multiply=1;
