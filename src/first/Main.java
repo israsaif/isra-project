@@ -182,8 +182,6 @@ public class Main {
 					}
 		           } break;
 		
-			
-
 			case 2:
                    
 				System.out.println("******************REPORT*******************");
@@ -235,6 +233,7 @@ public class Main {
 				break;
 
 			case 6:
+				
 				System.out.println("Factoral using recurssion method:-");
 				System.out.println("Enter factoral number :");
 				int factoralNo=sa.nextInt();
