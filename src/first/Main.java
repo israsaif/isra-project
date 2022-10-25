@@ -185,7 +185,7 @@ public class Main {
 			
 
 			case 2:
-
+                   
 				System.out.println("******************REPORT*******************");
 
 				for (School s : schoolName) {
@@ -211,6 +211,8 @@ public class Main {
 				}
 				break;
 			case 4:
+				
+				//duplicate
 				for (String f : eList) {
 					if (eList.add(f) == false) {
 			System.out.println("duplicate email:\n" + f);
