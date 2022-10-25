@@ -1,7 +1,7 @@
 package first;
 
 public class Marks {
-
+  // in this class only add properties
   int courseMark;
   void setCourseMarks (int courseMarks) {
   if(courseMarks>0&& courseMarks<100) {
