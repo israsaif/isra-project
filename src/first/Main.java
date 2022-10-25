@@ -213,7 +213,7 @@ public class Main {
 			case 4:
 				for (String f : eList) {
 					if (eList.add(f) == false) {
-//						System.out.println("duplicate email:\n" + f);
+			System.out.println("duplicate email:\n" + f);
 					}
 				}
 				break;
