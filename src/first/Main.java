@@ -219,6 +219,7 @@ public class Main {
 				break;
 				
 			case 5:
+				// Currency Report
 				for(String studentCurrency: StudentcurrancyAndAmount.keySet())
 				{
 					Map<String ,Double> lowerMap = StudentcurrancyAndAmount.get(studentCurrency);
