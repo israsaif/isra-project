@@ -206,6 +206,7 @@ public class Main {
 				}
 				break;
 			case 3:
+				//history
 				while (history.empty() == false) {
 					System.out.println(history.pop());
 				}
