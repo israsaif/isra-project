@@ -2,9 +2,15 @@ package first;
 
 import java.util.ArrayList;
 
-public class Student {
+public class Student implements studentInterface{
+	 ArrayList<Course> ourCourse=new ArrayList<>();
+	 String studentName;
+	 String studentEmail;
+	 float studentAmount;
+   	int studentAge;
+	
 
-  ArrayList<Course> ourCourse=new ArrayList<>();
+ 
   void setOurCourse(ArrayList<Course>ourCourse) {
   this.ourCourse=ourCourse;
  }
@@ -12,21 +18,21 @@ public class Student {
   return ourCourse;
  }
 
-    String studentName;
+    
    
    
-    void setStudentName(String a) {
+    void setStudentName(String a) {                                       
   
-    this.studentName=a;
+    this.studentName=a;              
    
     }
    
-   String getStudentName () {
-   return studentName;
+   String getStudentName () {                      
+   return studentName;                                                             
    }
    
    
-   String studentEmail;
+   
    
 
    void setStudentEmail(String b) {
@@ -35,7 +41,7 @@ public class Student {
    String getStudentEmail() {
 	   return studentEmail;
 	   }
-  float studentAmount;
+  
 
   void setStudentAmount(float b) {
   this.studentAmount=b;
@@ -43,5 +49,26 @@ public class Student {
   float getStudentAmount() {
 	   return studentAmount;
 	   }
+
+ void setStudentAge(int q) {
+	   this.studentAge = q;
+	   }
+	   int getStudentAge() {
+		   return studentAge;
+		   }
+  
+  
+  
+  
+@Override
+public void studentAge(int studentAgeInput) {}
+//	if(studentAgeInput>6&&studentAgeInput<18) {
+//		System.out.println("can join to school");
+//	}else {
+//		System.out.println("can not join to school");
+//		
+//	}
+//}
+
 
 }
