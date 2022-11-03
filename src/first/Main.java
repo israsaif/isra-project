@@ -28,15 +28,26 @@ public class Main {
 		
 	}
 	
+//	    @Override
+//		protected void finalize() throws Throwable{
+//	    	super.finalize();
+//	    	System.out.println("object Deleted");
+//	    }
 	
 	
 	
-	
-	public static void main(String[] args) throws IOException
+	public static void main(String[] args) throws Throwable
 	{
 //	Student studentList = new Student();
 //	Course newCourse = new Course();
 //	Marks newMarks = new Marks();
+		
+//		for (int i=0;i<1000000;i++) {
+//			Main mi=new Main();
+//		}
+//		
+		
+		
 		
 		
          FileOutputStream fileOut;
@@ -164,6 +175,7 @@ public class Main {
 					
 
 					while (isExit) {
+						studentList.finalize();
 						System.out.println("Enter Student age:");
 						studentAgeInput = sa.nextInt();
 						studentList.setStudentAge(studentAgeInput);
@@ -257,8 +269,11 @@ public class Main {
 						hasExit = Boolean.TRUE;
 
 						while (hasExit) {
+							
+					
 							Course newCourse = new Course();
 							Marks newMarks = new Marks();
+							newCourse.finalize();
 							System.out.println("Enter Course Name:");
 							String courseList = sa.next();
 							newCourse.setCourseName(courseList);
