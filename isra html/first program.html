@@ -1,0 +1,54 @@
+<!Doctype html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="homepage.css">
+<title>school</title>
+</head>
+<body>
+	<div style="margin-bottom:900px;" class="navbar">
+		<a href="home.html" class="active">Home</a>
+		<a href="about.html">about</a>
+		<a href="services.html">services</a>
+		<a href="contact.html">Contact</a>
+		<a href="student.html">student</a>
+	  </div>
+	  <br><br>
+	  <br><br>
+	  <br><br>
+	
+<!-- The four columns -->
+<div class="row">
+	<div class="column"><br><br><br><br><br><br><br>
+	  <img src="1.jpg" alt="1" style="width:100%" onclick="myFunction(this);">
+	</div>
+	<div class="column"><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	  <img src="2.jpg" alt="2" style="width:100%" onclick="myFunction(this);">
+	</div>
+	<div style="margin:right 100px;"class="column">
+		<img  src="5.jpg" alt="5" style="width:300%" onclick="myFunction(this);">
+	  </div>
+  <div class="container">
+	<span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+	<img id="expandedImg" style="width:100%">
+	<div id="imgtext"></div>
+  </div>
+
+  
+  <script>
+  function myFunction(imgs) {
+	var expandImg = document.getElementById("expandedImg");
+	var imgText = document.getElementById("imgtext");
+	expandImg.src = imgs.src;
+	imgText.innerHTML = imgs.alt;
+	expandImg.parentElement.style.display = "block";
+  }
+	
+  </script>
+    
+	  
+</body>
+
+</footer>
+
+</html>
