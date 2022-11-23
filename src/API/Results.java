@@ -1,5 +1,7 @@
 package API;
 
+import java.util.List;
+
 public class Results {
 	private String gender;
 	private String email;
@@ -58,8 +60,11 @@ public class Results {
 	public void setNat( String nat) {
 		this.nat=nat;
 	
-	}	
-	
-	
+	}
+	public static List<Results> getResults() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
