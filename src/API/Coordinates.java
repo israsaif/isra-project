@@ -1,32 +1,22 @@
 package API;
 
 public class Coordinates {
-	private int latitude;
-	private int longitude;
-	
-	
-	public int getLatitude() {
+	private String latitude;
+	private String longitude;
+	public String getLatitude() {
 		return latitude;
-
 	}
-	public void setLatitude(int latitude) {
-		this.latitude=latitude;
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
 	}
-	
-	
-	
-	public int getLongitude() {
+	public String getLongitude() {
 		return longitude;
-
 	}
-	public void setLongitude(int longitude) {
-		this.longitude=longitude;
-	
-	
-	
-	
-	
-	
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
+	
+	
+	
 	
 }

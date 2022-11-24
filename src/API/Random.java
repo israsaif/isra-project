@@ -3,8 +3,9 @@ package API;
 import java.util.List;
 
 public class Random {
-  private List<Results>results;
+  private List<Results> results;
   private Info info;
+  
 public List<Results> getResults() {
 	return results;
 }
@@ -17,4 +18,9 @@ public Info getInfo() {
 public void setInfo(Info info) {
 	this.info = info;
 }
+  
+  
+  
+  
+
 }

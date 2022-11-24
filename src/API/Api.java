@@ -14,76 +14,255 @@ import java.io.PrintStream;
 
 public class Api {
 	
+	private static String nat;
+	private static String logian;
+
 	public static void main(String[] args) {
+		
+		HttpClient client = HttpClient.newHttpClient();
+
 		boolean menue=true;
 		boolean users=true;
+		boolean nat=true;
+
 		Scanner sa=new Scanner(System.in);
 		while(menue) {
 			System.out.println("1.multple users");
 			System.out.println("2.pagination");
 			System.out.println("3.passward");
 			System.out.println("4.seeding");
+			System.out.println("5.Nationalities");
+			System.out.println("6.Including/Excluding");
+			System.out.println("7.Using previous versions");
 			
+		
 			String bb = sa.next();
 			int option = Integer.parseInt(bb);
+			Random random;
 			switch (option) {	
+			
+			
+			
+			
 			case 1:
 				while(users) {
 					System.out.println("PLS ENTER USERS:");
 					int user = sa.nextInt();
 					if(user ==0) {
 						
-					HttpRequest request = HttpRequest.newBuilder()
-							.uri(URI.create("https://randomuser.me/api/?results=30"))
-							
-							.method("GET", HttpRequest.BodyPublishers.noBody())
-							.build();
-					HttpResponse<String> response = null;
-					try {
-						response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-					} catch (IOException e) {
-						e.printStackTrace();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+						try {
+						HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://randomuser.me/api/?results=30")).build();
+						HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+						System.out.println(response.body());
+						Gson gson = new Gson();
+						Random random1 = gson.fromJson(response.body(), Random .class);
+						
+						for(int i=0; i<response.body().length();i++)
+						{
+						System.out.println("*********************");
+						System.out.println(random1.getResults().get(i).getEmail());
+						System.out.println(random1.getResults().get(i).getCell());
+						System.out.println(random1.getResults().get(i).getGender());
+
+						System.out.println("*********************");
+						}
+						}catch(Exception e)
+						{
+							System.out.println(e);
+
+						}
+					}else {
+						try{
+						System.out.println("PLS ENTER USERS:");
+						int user1 = sa.nextInt();
+						HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://randomuser.me/api/?results="+user1)).build();
+						HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+						System.out.println(response.body());
+						Gson gson = new Gson();
+						Random random1 = gson.fromJson(response.body(), Random .class);
+						
+						for(int i=0; i<user1;i++)
+						{
+						System.out.println("*********************");
+						System.out.println(random1.getResults().get(i).getEmail());
+						System.out.println(random1.getResults().get(i).getCell());
+						System.out.println(random1.getResults().get(i).getGender());
+
+						System.out.println("*********************");
+						}
+						}catch(Exception e)
+						{
+							System.out.println(e);
+
+						}
+						System.out.println("0");
+						int userStop = sa.nextInt();
+						if(userStop == 0)
+						{
+							users = false;
+						}
+
 					}
-					System.out.println(response.body());
 					
-					Gson gson = new Gson();
-					
-					Random random = gson.fromJson(response.body().toString(),Random.class);
-					System.out.print("Version:"+random.getInfo().getVersion()+"\n");
-					System.out.print("gender:"+random.getResults().get(0).getGender()+"\n");
-					System.out.print("email:"+random.getResults().get(0).getEmail()+"\n");
-					
+				}
 				
-					}
-				}users=false;
 				
-				break;
-			
+						break;
+					
 			case 2:
 				
+				try {
+					System.out.println("PLS ENTER page:");
+					int page = sa.nextInt();
+					System.out.println("PLS ENTER Result:");
+					int result = sa.nextInt();
+					System.out.println("PLS Write Seed:");
+					String seed = sa.next();
+				HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://randomuser.me/api/?page="+page+"&results="+result+"&seed="+seed)).build();
+				HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+				Gson gson = new Gson();
+				Random random1 = gson.fromJson(response.body(), Random .class);
+				for(int i=0; i<result;i++)
+				{
+				System.out.println("*********************");
+				System.out.println(random1.getResults().get(i).getEmail());
+				System.out.println(random1.getResults().get(i).getCell());
+				System.out.println(random1.getResults().get(i).getGender());
+				System.out.println(random1.getInfo().getPage());
+				System.out.println(random1.getInfo().getSeed());
+				System.out.println("*********************");
+				}
+			
+				}catch(Exception e)
+				{
+					System.out.println(e);
+
+				}
 				break;
 			
 			case 3:
+				try {
+					System.out.println("PLS Write Password:");
+					String pass = sa.next();
+					HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://randomuser.me/api/?password=0"+pass)).build();
+					HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+					Gson gson = new Gson();
+					Random random1 = gson.fromJson(response.body(), Random .class);
+					System.out.println("*********************");
+					System.out.println(random1.getResults().get(0).getEmail());
+					System.out.println(random1.getResults().get(0).getCell());
+					System.out.println(random1.getResults().get(0).getGender());
+					System.out.println(random1.getInfo().getPage());
+					System.out.println(random1.getInfo().getSeed());
+					System.out.println("*********************");
+					}catch(Exception e)
+					{
+						System.out.println(e);
+
+					}
+				
 				break;
 			
 			case 4:
-				
-				
-				
+				try {
+					System.out.println("PLS Write Seed:");
+					String seed = sa.next();
+					HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://randomuser.me/api/?seed=0"+seed)).build();
+					HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+					Gson gson = new Gson();
+					Random random1 = gson.fromJson(response.body(), Random .class);
+					System.out.println(random1.getResults().get(0).getEmail());
+					System.out.println(random1.getResults().get(0).getCell());
+					System.out.println(random1.getResults().get(0).getGender());
+					System.out.println(random1.getInfo().getPage());
+					System.out.println(random1.getInfo().getSeed());
+					System.out.println("*********************");
+					}catch(Exception e)
+					
+					{
+						System.out.println(e);
+
+					}
 				break;
-		}
+				
+			case 5:
+				try {
+					System.out.println("PLS Write Nationalities:");
+					String Nat = sa.next();
+					HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://randomuser.me/api/?nat="+Nat)).build();
+					HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+					Gson gson = new Gson();
+					Random random1 = gson.fromJson(response.body(), Random .class);
+					System.out.println(random1.getResults().get(0).getEmail());
+					System.out.println(random1.getResults().get(0).getCell());
+					System.out.println(random1.getResults().get(0).getGender());
+					System.out.println(random1.getInfo().getPage());
+					System.out.println(random1.getInfo().getSeed());
+					System.out.println(random1.getResults().get(0).getNat());
+					System.out.println("*********************");
+					}catch(Exception e)
+					
+					{
+						System.out.println(e);
+
+					}
+				break;
+				
+			
+			 case 6:
+			  
+			 try { System.out.println("PLS Write Including/Excluding:");
+			 String Nat = sa.next(); HttpRequest request =
+			  HttpRequest.newBuilder().uri(URI.create("https://randomuser.me/api/?exc=login"
+			  )).build(); HttpResponse<String> response = client.send(request,
+			  HttpResponse.BodyHandlers.ofString()); 
+			  Gson gson = new Gson();
+			  Random random1= gson.fromJson(response.body(), Random .class);
+			  System.out.println(random1.getResults().get(0).getEmail());
+			  System.out.println(random1.getResults().get(0).getCell());
+			  System.out.println(random1.getResults().get(0).getGender());
+			  System.out.println(random1.getInfo().getPage());
+			  System.out.println(random1.getInfo().getSeed());
+			  System.out.println(random1.getResults().get(0).getNat());
+			  System.out.println(random1.getResults().get(0).getLogin());
+			  System.out.println("*********************");
+			  }catch(Exception e)
+			 { System.out.println(e);
+			  
+			  } break;
+			 
+				
+			case 7:
+				try {
+					System.out.println("PLS Using previous versions:");
+					String seed = sa.next();
+					HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://randomuser.me/api/1.4/")).build();
+					HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+					Gson gson = new Gson();
+					Random random1 = gson.fromJson(response.body(), Random .class);
+					System.out.println(random1.getResults().get(0).getEmail());
+					System.out.println(random1.getResults().get(0).getCell());
+					System.out.println(random1.getResults().get(0).getGender());
+					System.out.println(random1.getInfo().getPage());
+					System.out.println(random1.getInfo().getSeed());
+					System.out.println(random1.getResults().get(0).getNat());
+					System.out.println(random1.getResults().get(0).getLogin());
+					System.out.println("*********************");
+					}catch(Exception e)
+					
+					{
+						System.out.println(e);
+
+					}
+				break;
 		
+				
+			
+			}
+		}menue = false;
 		
-		
-		
-		
-		
-		
-		
-		
-		
+	}
+}	
 		
 		
 		
@@ -104,6 +283,3 @@ public class Api {
 		
 		
 	
-	}
-	}
-}

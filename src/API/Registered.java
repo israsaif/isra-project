@@ -1,16 +1,16 @@
 package API;
 
 public class Registered {
-	private int date;
+	private String date;
 	private int age;
 	
 	
 
-	public int getdate() {
+	public String getdate() {
 		return date;
 
 	}
-	public void setdate(int date) {
+	public void setdate(String date) {
 		this.date=date;
 	}
 	
