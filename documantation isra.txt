@@ -1,0 +1,142 @@
+Introduction how do API in java :
+In November 2022 I search how to do it documatation from the java program and api and json
+
+how we use:
+
+first of all i used the pakage name"API:
+then in this pakage we useed many class and linked together.
+
+secend thing I opened https://randomuser.me/ 
+to use data from the website and convert data form json to java object.
+
+Third thing I do classes with parameters and 
+ set , get 
+ 
+ First class i named "Random" it has "resultList , info" then used setter and getter.
+ Then in class results we do many things elements and classes also object and setter and getter
+ such as:
+ private String gender;
+	private String email;
+	private String phone;
+	private String cell;
+	private String nat;
+	
+	Resultsname NAME;
+	Location LOCATION;
+	Login LOGIN;
+	Dob DOB;
+	Registered REGISTERED;
+	Id ID;
+	Picture PICTURE;
+		
+ public String getGender() {
+		return gender;
+
+	}
+	public void setGender(String gender) {
+		this.gender=gender;
+	}
+	in Resultsname we do it class have proprtese 
+	private String title;
+	private String first;
+	private String last;
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title=title;
+	}
+	also in this
+	Login LOGIN;
+	Dob DOB;
+	Registered REGISTERED;
+	Id ID;
+	Picture PICTURE;
+	we do it seprate class same steps from Resultsname class .
+	
+	________________________________________
+
+
+	in Info class also we do it many propartese such as:
+	private String seed;
+	private int results;
+	private int page;
+	private String version;
+
+	public String getSeed() {
+		return seed;
+	}
+	public void setSeed(String seed) {
+		this.seed=seed;
+		}
+	_____________________________________________________
+	
+	the next step we open new class name "random"
+	we used ihe gson to java and java to gson 
+	then use the menue for the gson 
+      1.multple users
+      2.pagination
+      3.seeding
+_______________________________________________________
+ 
+
+  * The next steps wo do it the menue :
+     1.multple users
+     2.pagination
+     3.passward
+     4.seeding
+     5.Nationalities
+     6.Including/Excluding
+
+ case 1: 
+ew do it multible users we search in the https://randomuser.me/
+and woekrd in to the code in java I used if else  to include multibale users if we wont directly give us number for example:
+"https://randomuser.me/api/?results=30") I select specific number and do it (try & catch )to check the errors inside the scope in step one .
+
+the next step also i used (try & catch) and do it the esles  and put the user use multible users https://randomuser.me/api/?results="+user1 the user give the number for the 
+email , gender , and cell.
+
+
+
+case 2:
+I used the user choose 
+enter page:
+enter results
+enter seed
+I used this link to the user choose"https://randomuser.me/api/?page="+page+"&results="+result+"&seed="+seed)
+go to get api  then  get info  then get page .
+same this steps i do it for seed , also I do it (try& catch to checke the errors).
+
+case 3:
+we used the password in case 3 : we do same thing only in the links a change "https://randomuser.me/api/?password=0"+pass
+then do it object chaning I do it System.out.println(random1.getResults().get(0).getEmail());
+also for gender and cell.
+
+case 4:
+we used the seed "https://randomuser.me/api/?seed=0"+seed e
+we used new addition .
+
+case 5:
+we used Write Nationalities in this case "https://randomuser.me/api/?nat="+Nat)
+then object chaning for this steps i do it random1.getResults().get(0).getNat()
+
+case 6:
+we used Including/Excluding in the code
+ 
+the Excluding we choose the wich the user no need incloude in the ouput
+"https://randomuser.me/api/?exc=" + userarr
+if i choose gender no need the data icloud in the output
+
+Includin if we wont only what data i wont inclode in the output we use "https://randomuser.me/api/?inc=" + incl
+the user choosh how many result he wont included .
+
+all caseswe used (try&catch ) .
+
+
+
+
+
+
+
+

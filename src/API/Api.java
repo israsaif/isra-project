@@ -33,7 +33,7 @@ public class Api {
 			System.out.println("4.seeding");
 			System.out.println("5.Nationalities");
 			System.out.println("6.Including/Excluding");
-			System.out.println("7.Using previous versions");
+			//System.out.println("7.Using previous versions");
 			
 		
 			String bb = sa.next();
@@ -211,52 +211,71 @@ public class Api {
 			
 			 case 6:
 			  
-			 try { System.out.println("PLS Write Including/Excluding:");
-			 String Nat = sa.next(); HttpRequest request =
-			  HttpRequest.newBuilder().uri(URI.create("https://randomuser.me/api/?exc=login"
-			  )).build(); HttpResponse<String> response = client.send(request,
-			  HttpResponse.BodyHandlers.ofString()); 
-			  Gson gson = new Gson();
-			  Random random1= gson.fromJson(response.body(), Random .class);
-			  System.out.println(random1.getResults().get(0).getEmail());
-			  System.out.println(random1.getResults().get(0).getCell());
-			  System.out.println(random1.getResults().get(0).getGender());
-			  System.out.println(random1.getInfo().getPage());
-			  System.out.println(random1.getInfo().getSeed());
-			  System.out.println(random1.getResults().get(0).getNat());
-			  System.out.println(random1.getResults().get(0).getLogin());
-			  System.out.println("*********************");
-			  }catch(Exception e)
-			 { System.out.println(e);
-			  
-			  } break;
-			 
-				
-			case 7:
-				try {
-					System.out.println("PLS Using previous versions:");
-					String seed = sa.next();
-					HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://randomuser.me/api/1.4/")).build();
+				 try {
+					
+					System.out.println("Enter the Result ?");
+					int result = sa.nextInt();
+					
+					System.out.println("Enter Type of data to be Execluded ?");
+					String userarr = sa.next();
+
+					HttpRequest request = HttpRequest.newBuilder()
+							.uri(URI.create(
+									"https://randomuser.me/api/?exc=" + userarr))
+							.build();
 					HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-					Gson gson = new Gson();
-					Random random1 = gson.fromJson(response.body(), Random .class);
-					System.out.println(random1.getResults().get(0).getEmail());
-					System.out.println(random1.getResults().get(0).getCell());
-					System.out.println(random1.getResults().get(0).getGender());
-					System.out.println(random1.getInfo().getPage());
-					System.out.println(random1.getInfo().getSeed());
-					System.out.println(random1.getResults().get(0).getNat());
-					System.out.println(random1.getResults().get(0).getLogin());
-					System.out.println("*********************");
-					}catch(Exception e)
+					// System.out.println("Random Users: \n" +response.body());
+					Random random1 = new Gson().fromJson(response.body(), Random.class);
+					
+						for (int i = 0; i < result; i++) {
+							if(random1.getResults().get(i).getGender()!=null) {
+							System.out.println(random1.getResults().get(i).getGender());}
+							if(random1.getResults().get(i).getEmail()!=null) {
+							System.out.println(random1.getResults().get(i).getEmail());}
+							if(random1.getResults().get(i).getNat()!=null) {
+							System.out.println(random1.getResults().get(i).getNat());}
+							System.out.println("***************************");
+						}
+				 }catch(Exception e)
 					
 					{
 						System.out.println(e);
 
+				}
+				 
+				 
+				 try {
+						
+						System.out.println("Enter the Result ?");
+						int result = sa.nextInt();
+						
+						System.out.println("Enter Type of data to be included ?");
+						String incl = sa.next();
+
+						HttpRequest request = HttpRequest.newBuilder()
+								.uri(URI.create(
+										"https://randomuser.me/api/?inc=" + incl))
+								.build();
+						HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+						// System.out.println("Random Users: \n" +response.body());
+						Random random1 = new Gson().fromJson(response.body(), Random.class);
+						
+							for (int i = 0; i < result; i++) {
+								if(random1.getResults().get(i).getGender()!=null) {
+								System.out.println(random1.getResults().get(i).getGender());}
+								if(random1.getResults().get(i).getEmail()!=null) {
+								System.out.println(random1.getResults().get(i).getEmail());}
+								if(random1.getResults().get(i).getNat()!=null) {
+								System.out.println(random1.getResults().get(i).getNat());}
+								System.out.println("***************************");
+							}
+					 }catch(Exception e)
+						
+						{
+							System.out.println(e);
+
 					}
-				break;
-		
-				
+						break;
 			
 			}
 		}menue = false;
